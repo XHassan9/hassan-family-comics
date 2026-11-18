@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hassan Family Comics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+/* VOICE: loud, warm, Saturday-morning comic shop; family inside jokes.
+   IDEA: a spinner rack at the beach house. Every issue is a real comic you pull off the shelf.
+   PICTURE: the whole crew lineup as the hero, framed like a comic panel with halftone dots.
+   COLOUR and TYPE: deep comic navy, newsprint cream, Steelers gold, cape red. Bangers + Nunito.
+   LAYOUT: hero, the 10-issue rack, the cast, the video plan. Reader opens full screen. */
+:root{color-scheme:light dark;
+--bg:light-dark(#fbf4e4,#0d1630);--ink:light-dark(#151515,#f5efe0);--card:light-dark(#fff,#16224a);
+--navy:#10224a;--gold:#ffc72c;--red:#d7263d;--line:light-dark(#151515,#000);--muted:light-dark(#5b5547,#b9b3a3)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.bang{font-family:Bangers,Impact,sans-serif;letter-spacing:.02em;font-weight:400;line-height:1.05;text-wrap:balance}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+a{color:inherit}
+/* hero */
+.hero{background:var(--navy);color:#fff;background-image:radial-gradient(rgba(255,199,44,.18) 1.5px,transparent 1.6px);background-size:14px 14px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(20px,4vw,48px);align-items:center}
+.hero h1{font-size:clamp(44px,7vw,84px);margin:0 0 10px;color:var(--gold);text-shadow:4px 4px 0 #000}
+.hero p{font-size:17px;max-width:44ch;margin:0 0 18px;color:#e9e6dc}
+.panel{border:5px solid #000;background:#fff;box-shadow:9px 9px 0 #000;transform:rotate(-1deg)}
+.panel img{display:block;width:100%;height:auto}
+.burst{display:inline-block;background:var(--red);color:#fff;font-family:Bangers,sans-serif;font-size:20px;padding:6px 14px;border:3px solid #000;transform:rotate(-3deg);box-shadow:4px 4px 0 #000}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border:3px solid #000;background:var(--gold);color:#000;font:900 16px Nunito,sans-serif;box-shadow:4px 4px 0 #000;cursor:pointer;text-decoration:none}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.btn:focus-visible,.issue:focus-visible{outline:4px solid var(--red);outline-offset:3px}
+/* rack */
+h2{font-size:clamp(34px,4.5vw,52px);margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 24px}
+.rack{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:22px}
+.issue{position:relative;display:flex;flex-direction:column;background:var(--card);border:4px solid var(--line);box-shadow:6px 6px 0 var(--line);cursor:pointer;text-align:left;padding:0;color:inherit;font:inherit;transition:transform .15s}
+.issue:hover{transform:translate(-2px,-4px) rotate(-.6deg)}
+.issue .art{aspect-ratio:3/4;overflow:hidden;background:#000;position:relative}
+.issue .art img{width:100%;height:100%;object-fit:cover;display:block}
+.issue .art.wide img{object-position:center}
+.issue .no{position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font:400 18px Bangers,sans-serif;padding:2px 10px;border:2px solid #000}
+.issue .tag{position:absolute;bottom:8px;right:8px;background:var(--gold);color:#000;font:900 12px Nunito;padding:3px 8px;border:2px solid #000}
+.issue .ovl{position:absolute;inset:auto 0 0 0;padding:44px 12px 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}
+.issue .ovl b{font:400 26px/1 Bangers,sans-serif;color:var(--gold);display:block}
+.issue .meta{padding:10px 12px 14px}
+.issue .meta b{display:block;font:400 22px/1.05 Bangers,sans-serif}
+.issue .meta span{font-size:14px;color:var(--muted)}
+/* cast */
+.cast{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.who{background:var(--card);border:3px solid var(--line);padding:12px 14px;box-shadow:4px 4px 0 var(--line);display:flex;gap:12px;align-items:flex-start}
+.who img{width:84px;height:84px;border-radius:50%;border:3px solid var(--line);object-fit:cover;flex:none;background:#fff}
+.who.ghost img{box-shadow:0 0 12px #8fd3ff}
+.who div{min-width:0}
+.who b{font:400 22px Bangers,sans-serif;display:block}
+.who span{font-size:15px}
+.who.ghost{background:light-dark(#e6f3ff,#18305c)}
+/* videos */
+.vids{counter-reset:v;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.vid{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;background:var(--card);border:3px solid var(--line);padding:10px;align-items:center}
+.vid img{width:96px;height:64px;object-fit:cover;border:2px solid #000}
+.vid b{display:block;font-weight:900}
+.vid span{font-size:14px;color:var(--muted)}
+.budget{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
+.budget div{background:var(--gold);color:#000;border:3px solid #000;padding:10px 16px;font-weight:900}
+.budget div small{display:block;font-weight:700;font-size:13px}
+/* reader */
+#reader{position:fixed;inset:0;background:#0b0b0b;color:#fff;z-index:20;display:none;overflow-y:auto}
+#reader.on{display:block}
+.rbar{position:sticky;top:0;z-index:2;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px max(3vw,12px);background:var(--navy);border-bottom:4px solid #000}
+.rbar h3{margin:0;font-size:clamp(20px,3vw,30px);color:var(--gold)}
+.rbar .nav{display:flex;gap:8px;flex-wrap:wrap}
+.pages{max-width:900px;margin:0 auto;padding:18px 12px 60px;display:grid;gap:18px}
+.pages figure{margin:0;background:#111;border:3px solid #333}
+.pages img{display:block;width:100%;height:auto}
+.pages figcaption{padding:10px 14px;font-size:16px;background:#fff7d6;color:#111;border-top:3px solid #000}
+.pages figcaption em{font-style:normal;font-weight:900;color:var(--red)}
+.note{background:var(--gold);color:#000;border:3px solid #000;padding:10px 14px;font-weight:700}
+footer{font-size:14px;color:var(--muted)}
+@media(max-width:600px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.panel{transform:none}.rack{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.issue .meta b{font-size:19px}}
+@media(prefers-reduced-motion:reduce){.issue{transition:none}.issue:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="band hero">
+  <div class="wrap">
+    <div>
+      <span class="burst">14 issues · 1 very patient Mom</span>
+      <h1>The Hassan Family Adventures</h1>
+      <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
+      <a class="btn" href="#issue-1">Start with Issue #1</a>
+    </div>
+    <div class="panel"><img src="img/lineup.jpg" alt="The whole Hassan crew lined up with name tags, plus the dogs and ghost Gido"></div>
+  </div>
+</header>
+
+<section class="band" id="rack">
+  <div class="wrap">
+    <h2>The comic rack</h2>
+    <p class="sub">Issues 1 to 5 are finished. Issues 6 to 14 are in the sketchbook: every panel is drawn, and speech bubbles come next.</p>
+    <div class="rack" id="rackGrid"></div>
+  </div>
+</section>
+
+<section class="band" style="background:light-dark(#f3e7c9,#111b3a)">
+  <div class="wrap">
+    <h2>Meet the cast</h2>
+    <p class="sub">Everyone who has shown up so far, living and otherwise.</p>
+    <div class="cast" id="castGrid"></div>
+  </div>
+</section>
+
+<section class="band" id="videos">
+  <div class="wrap">
+    <h2>Coming soon: the videos</h2>
+    <p class="sub">Six clips are made and sitting in your Runway account (session: Recliner Launch Chaos Animation). More coming.</p>
+    <div class="budget">
+      <div>185 credits used<small>5 budget clips and 1 premium</small></div>
+      <div>559 credits left<small>in the Runway account</small></div>
+    </div>
+    <div class="vids" id="vidGrid"></div>
+  </div>
+</section>
+
+<footer class="band"><div class="wrap">Made by TAZ for the Hassan family. Art drawn with Gemini from family photos. Issues 6 to 10 still need lettering and covers.</div></footer>
+
+<div id="reader" role="dialog" aria-modal="true" aria-labelledby="rTitle">
+  <div class="rbar">
+    <h3 id="rTitle"></h3>
+    <div class="nav">
+      <button class="btn" id="prev" type="button">‹ Prev</button>
+      <button class="btn" id="next" type="button">Next ›</button>
+      <button class="btn" id="close" type="button" style="background:#fff">Back to rack</button>
+    </div>
+  </div>
+  <div class="pages" id="pages"></div>
+</div>
+
+<script>
+{
+const I=[
+ {n:1,t:"The Great Golf Ball Heist",s:"Max steals Dad's ball. Sito drives the getaway cart.",cover:"img/i1-cover.jpg",pages:["p1","p2","p3","p4","p5","p6"]},
+ {n:2,t:"The Investigation",s:"Dad interrogates Coco. Coco wants a lawyer. And a cookie.",cover:"img/i2-cover.jpg",pages:["p1","p2","p3","p4","p5"]},
+ {n:3,t:"Turbo Time in Hilton Head",s:"Curbs, shrimp thieves and a one-armed golf swing.",cover:"img/i3-cover.jpg",pages:["p1","p2","p3","p4","p5","p6","p7"]},
+ {n:4,t:"Cookie Season",s:"Sito's Christmas album and one suspicious halo.",cover:"img/i4-cover.jpg",pages:["p1","p2","p3","p4","p5"]},
+ {n:5,t:"The Ghost of Gido",s:"Something's been drinking Dad's scotch...",cover:"img/i5-cover.jpg",pages:["p1","p2","p3","p4","p5"]},
+ {n:6,t:"The Straitjacket Caper",s:"One marriage. One straitjacket. Zero regrets.",sk:[
+  ["i6a","Dad naps in the lift recliner, mouth open, Steelers pregame on mute. Mom tiptoes in holding a straitjacket she ordered with <em>overnight shipping.</em> Coco: \"I didn't see anything.\""],
+  ["i6b","Dad wakes up buckled in. The Johnnie Walker sits two inches out of reach. Mom is filming vertical for the group chat. Gido hasn't laughed this hard since 1987."],
+  ["i6c","Max steps on the remote. The recliner tips Dad onto his tiptoes like a sad ballerina, right as the kids walk in. Regina: \"Going straight to the family album.\""],
+  ["i6d","Sunset on the back deck. Mom feeds him scotch through a bendy straw. Ghost Ralphie growls at Dad. For once, Dad growls back."],
+  ["h6thanks","<em>Thanksgiving:</em> Zan books a truckload between the turkey and the stuffing. TAZ carves the bird with a laser. Ghost Mistletoe steals Uncle Tom's sock. Charity shakes her head and Mom wears the gravy."]]},
+ {n:7,t:"Curb Your Mercedes",s:"Every curb on Hilton Head has met Dad. Most of them twice.",sk:[
+  ["i7a","Sea Pines, 9:04 AM. Curb #4 of the day. Sparks fly. Mom grips the handle. Max hangs out the window like it's a parade."],
+  ["i7b","The tire shop. One full wall of Dad's hubcaps. The mechanic hugs him like family, because Dad paid for his boat."],
+  ["i7c","Coligny Plaza. Two wheels on the curb, bumper in the begonias. Dad steps out: \"Perfect park.\""],
+  ["i7d","Keys confiscated. Coco drives the golf cart now, sunglasses on. Dad sulks in the passenger seat muttering about Mudgenoons."],
+  ["h7friday","<em>Black Friday:</em> the Mercedes takes three spots, so Zan sends an HTL semi for the shopping bags. Dad: \"See? THIS is why you spend too much.\""]]},
+ {n:8,t:"The Sibling Showdown",s:"Harbour Town. Three siblings. One putt. Zero honesty.",sk:[
+  ["i8a","The 18th green under the lighthouse. Zan, Regina and Spencer bet the last of Sito's cookies. Dad referees. Nobody trusts the ref."],
+  ["i8b","Max steals the ball. Everybody chases. Bubba and Bella take out three ankles. Dad yells \"MULLIGAN!\" at a dog."],
+  ["i8c","Coco walks over and drops the slobbery ball in the cup. Spencer: \"That's mine. I called it.\""],
+  ["i8d","Spencer wins, standing on a bucket so he's finally the tallest Hassan. Gido was clearly betting on him."],
+  ["h8golf","<em>Turkey Day golf:</em> TAZ reads the green for Zan. Spencer yells \"CHEATING!\" Max runs off with the flagstick. Dad loses a ball to a gator and blames the Mudgenoons."]]},
+ {n:9,t:"Sito's Christmas Album",s:"Then and now. Same pajamas. Fewer teeth missing.",sk:[
+  ["i9a","Christmas Eve at Sito's. The album comes out. Max is already eating a bow. Dad is already asleep."],
+  ["i9b","Flashback: three kids in plaid pajamas, Gido in a Santa hat, puppy chaos, and the most 1990s camera ever made."],
+  ["i9c","The grown-ups recreate the photo. Max pulls the tree down behind them. Dad: \"That's coming out of Zan's allowance.\""],
+  ["i9d","Late night. Sito and her album. Gido floats up and puts the star on top. \"Love you more.\""],
+  ["h9xmas","<em>Christmas Eve:</em> HTL mission control. Santa's sleigh broke down, so Zan hitched it to a purple semi. On-time delivery: 98%. The other 2% was Max."]]},
+ {n:10,t:"The Mudgenoon Awards",s:"Dad hosts. Dad presents. Dad somehow wins the worst award.",sk:[
+  ["i10a","The first annual Mudgenoon Awards, live from the back porch. Dress code: Steelers. Ralphie growls through the whole ceremony."],
+  ["i10b","Best Instigator goes to Max. Coco is deeply offended and requests a recount."],
+  ["i10c","Plot twist: Mom and Sito present Dad with the Golden Hubcap for Lifetime Achievement in Curbs. Standing ovation. Dad demands a recount."],
+  ["h10nye","<em>New Year's Eve:</em> Zan finally closes the laptop at 11:59. Uncle Tom points at ghost Ralphie. Ralphie growls. Mom kisses Dad. Ralphie growls louder."]]},
+ {n:11,t:"Dad vs. the Contractors",s:"Mom's away. The backyard is gone. A ghost is the foreman.",sk:[
+  ["j11a","Mom leaves for the weekend. Dad has a blueprint, one good arm and zero supervision. Gido floats in wearing a hard hat."],
+  ["j11b","The invoice arrives. It's longer than the deck. <em>\"THIS IS BULLSHIT!\"</em> Gido whispers: \"Double or nothing.\""],
+  ["j11c","Gido takes over as foreman. Tools fly. The crew quits. Dad supervises from a lawn chair with a Johnnie Walker."],
+  ["j11d","The reveal: a movie screen, a tiki bar and a fire pit. Zan pulls up in the Nissan Z. Mom's taxi is right behind him. Everybody stops breathing."]]},
+ {n:12,t:"Gido's Poker Night",s:"The house always wins. The house is a ghost.",sk:[
+  ["k12a","Gido deals himself four aces. Again. Dad bets the Mercedes. Charity shakes her head and the drool hits the ceiling fan. Mom quietly takes the pot."]]},
+ {n:13,t:"Dad's Money Lessons",s:"Dad says Zan spends too much. Dad just bought a movie screen.",sk:[
+  ["k13a","\"You are IRRESPONSIBLE with money!\" says the man standing in front of a backyard movie theater, a tiki bar and a contractor invoice taller than he is. Zan is holding one tiny shopping bag."]]},
+ {n:14,t:"Ralphie Only Loves Mom",s:"One ghost dog. One favorite human. Everyone else is on notice.",sk:[
+  ["k14a","Ghost Ralphie melts into Mom's lap like a puppy. Dad reaches over. One finger. Ralphie snarls. The kids dive behind the armchair. Coco: \"Told you.\""]]}
+];
+const CAST=[
+ ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
+ ["Mom","Blonde bob, red leopard top. Owns one straitjacket and isn't afraid to use it. The only human Ralphie likes. Runs this family like a freight terminal."],
+ ["Sito","Big glasses, endless cookies, a photo album longer than the Bible. Says \"love you more\" like it's a threat."],
+ ["Zan","Runs HTL and TAZ, usually during dinner. Drives the black Nissan Z. \"Irresponsible with money,\" according to a man with a tiki bar."],
+ ["Regina","The youngest, and she will remind you. Phone always filming. Frenchie mom. Rules do not apply to her. Marrying Erik next year, God help him."],
+ ["Erik","Regina's fiancé. Gray beanie, cream sherpa, a seltzer in each hand. Still in his probationary period with Dad."],
+ ["Spencer","The shortest Hassan. Will claim any putt, any cookie and any win. Owns a bucket specifically for photos."],
+ ["Aunt Hope","RBG shirt, cropped hair, first to laugh and the loudest. Will fact-check your Thanksgiving opinions."],
+ ["Uncle Tom","Steelers zip-up. Has lost more socks than Dad has hubcaps. The only one who can see the ghosts."],
+ ["Aidan","Cousin. A mustache so good it has its own fan club. Steelers pullover, zero chill."],
+ ["Ava","Cousin. Mistletoe's person. Still mad at Uncle Tom about the sock thing."],
+ ["Max","White Samoyed. The instigator. Has stolen golf balls, a remote, a Christmas bow and Dad's dignity."],
+ ["Coco","Chocolate lab in sunglasses. Chill, sarcastic diva. Judging you right now. Drives the golf cart better than Dad."],
+ ["Bubba","Regina's black Frenchie. Built like a cinder block. Snores like a leaf blower."],
+ ["Bella","Regina's gray Frenchie. Ankle assassin. Has taken out three golfers and a Thanksgiving tray."],
+ ["TAZ","Zan's robot. Carves turkey with a laser, reads greens, will not stop booking freight."],
+ ["Gido","Lifelong gambler. Still deals himself four aces. Got banned from bingo in heaven.",1],
+ ["Charity","Gido's basset hound. One head shake and the drool hits the ceiling fan. And Mom.",1],
+ ["Ralphie","Black dog, white chest. Growls at everyone. Only loves Mom. Hates Dad's finger specifically.",1],
+ ["Mistletoe","Shih Tzu. Professional sock thief. Uncle Tom is her main supplier.",1]
+];
+const VIDS=[["i6c","Straitjacket launch","The recliner fires Dad onto his tiptoes."],["i7a","Curb #4","Sparks fly. Max's ears flap."],["i7b","Hubcap wall","The camera pans the wall of hubcaps."],["i7d","Coco drives","One paw on the wheel. Dad sulks."],["i8c","The slobber putt","Coco sinks it. Spencer celebrates."],["h6thanks","Sock thief","Mistletoe slowly takes Uncle Tom's sock."],["h6thanks","TAZ carves","Laser turkey during a freight call."],["h9xmas","Santa's HTL truck","The sleigh takes off behind a semi."],["i10c","The Golden Hubcap","Dad's slow, outraged double-take."],["h10nye","Ralphie growls","Uncle Tom points. Fireworks."]];
+const $=s=>document.querySelector(s);
+$("#rackGrid").innerHTML=I.map(i=>{
+  const img=i.cover||`img/${i.sk[0][0]}.jpg`;
+  return `<button class="issue" type="button" data-n="${i.n}" aria-label="Read Issue ${i.n}: ${i.t}">
+   <div class="art ${i.cover?'':'wide'}"><img src="${img}" alt="" loading="lazy"><span class="no">#${i.n}</span>${i.cover?'':`<span class="tag">Sketchbook</span>`}</div>
+   <div class="meta"><b>${i.t}</b><span>${i.s}</span></div></button>`}).join("");
+$("#castGrid").innerHTML=CAST.map(c=>`<div class="who ${c[2]?'ghost':''}"><img src="img/av/${c[0].toLowerCase().replace(' ','-')}.jpg" alt="${c[0]}" loading="lazy"><div><b>${c[0]}${c[2]?' (ghost)':''}</b><span>${c[1]}</span></div></div>`).join("");
+$("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><img src="img/${v[0]}.jpg" alt="" loading="lazy"><div><b>${k+1}. ${v[1]}</b><span>${v[2]} · about 25 credits</span></div></div>`).join("");
+const R=$("#reader");
+function show(n){
+  const i=I.find(x=>x.n===n); if(!i){R.classList.remove("on");document.body.style.overflow="";return}
+  $("#rTitle").textContent=`Issue #${i.n}: ${i.t}`;
+  $("#pages").innerHTML=i.cover
+   ? `<figure><img src="${i.cover}" alt="Cover of Issue ${i.n}"></figure>`+i.pages.map(p=>`<figure><img src="img/i${i.n}-${p}.jpg" alt="Issue ${i.n} page" loading="lazy"></figure>`).join("")
+   : `<div class="note">Sketchbook preview: panels are drawn, speech bubbles come next.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("");
+  $("#prev").disabled=n===1;$("#next").disabled=n===14;
+  R.classList.add("on");R.scrollTop=0;document.body.style.overflow="hidden";
+}
+function route(){const m=location.hash.match(/^#issue-(\d+)$/);show(m?+m[1]:0)}
+document.addEventListener("click",e=>{const b=e.target.closest(".issue");if(b)location.hash="issue-"+b.dataset.n});
+$("#close").onclick=()=>{location.hash="rack"};
+$("#prev").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.max(1,+m[0]-1)};
+$("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.min(14,+m[0]+1)};
+document.addEventListener("keydown",e=>{if(!R.classList.contains("on"))return;if(e.key==="Escape")$("#close").click();if(e.key==="ArrowRight")$("#next").click();if(e.key==="ArrowLeft")$("#prev").click()});
+window.addEventListener("hashchange",route);route();
+}
+</script>
+</body>
+</html>
