@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hassan Family Comics</title>
-<meta name="description" content="19 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
+<meta name="description" content="20 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="19 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="20 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -130,13 +130,14 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">19 issues · 9 shorts · 1 very patient Mom</span>
+      <span class="burst">20 issues · 9 shorts · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <p id="hello"></p>
       <div class="heroBtns">
         <a class="btn" id="startBtn" href="#issue-1">Start with Issue #1</a>
         <button class="btn ghostbtn" id="share" type="button">Share with family</button>
+        <a class="btn ghostbtn" id="memory" href="https://docs.google.com/forms/d/e/1FAIpQLSfAeoM9KwQ9EhcbUOh9DZPuR6ToWsHW3rtdkCt7tdccUmKXDQ/viewform" target="_blank" rel="noopener">Share a photo or memory</a>
       </div>
       <ul class="how"><li>1. Tap a cover</li><li>2. Scroll down to read</li><li>3. Tap the red button for the next one</li></ul>
     </div>
@@ -147,7 +148,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Nineteen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Twenty issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -269,7 +270,11 @@ const I=[
  {n:19,t:"Aunt Hope's Premiere: Be Nice To Me",s:"Aunt Hope reads the comic. Aunt Hope has notes.",sk:[
   ["n19","Aunt Hope finds out she's in the comic. Her first move is a text to Zan: \"Be nice to me!\" His move is to leave her on read."],
   ["n19b","Flashback to the Hess ice rink. Aunt Hope glides like it's nothing. Little Zan is welded to the wall with a pretzel. She let go once. Once."],
-  ["n19c","Thanksgiving, fact-check edition. Aunt Hope rules on every family claim with her phone and a gold star. Dad calls it bullshit. Uncle Tom is still missing a sock."]]}
+  ["n19c","Thanksgiving, fact-check edition. Aunt Hope rules on every family claim with her phone and a gold star. Dad calls it bullshit. Uncle Tom is still missing a sock."]]},
+ {n:20,t:"Christmas at the Hess Rink",s:"A flashback. Sito, Aunt Hope, Uncle Tom, and three very small grandkids on skates.",sk:[
+  ["n20","Christmas week, 1990-something. Sito guards the wall with a thermos and pretzels. Aunt Hope tows Zan, Spencer and Regina. Uncle Tom is on his own."],
+  ["n20b","Uncle Tom goes down. Aunt Hope lands on him laughing. Three grandkids slide past like penguins. Sito has both hands on her cheeks."],
+  ["n20c","Snack bar, hot chocolate, a soft pretzel, one disposable camera. Uncle Tom has a bandage and no regrets."]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -332,7 +337,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 19 comics, 9 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 20 comics, 9 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
@@ -350,7 +355,8 @@ function show(n){
      +(i.vid?`<figure class="clip" id="vidFig"><div class="note">Now in motion. Sound on.</div><video src="vid/${i.vid[0]}.mp4" controls playsinline preload="metadata"></video><figcaption>${i.vid[1]}</figcaption></figure>`:"");
   const end=`<div class="endcard" id="endcard"><div class="bang">That's a wrap on Issue #${i.n}!</div>`
     +(nx?`<button class="btn big" type="button" data-go="${nx.n}">Next: Issue #${nx.n}, ${nx.t} ›</button>`:`<p>You're all caught up. New episodes whenever Dad hits a curb.</p>`)
-    +`<button class="btn alt" type="button" data-go="0">Back to all issues</button></div>`;
+    +`<button class="btn alt" type="button" data-go="0">Back to all issues</button>`
+    +`<a class="btn alt" href="https://docs.google.com/forms/d/e/1FAIpQLSfAeoM9KwQ9EhcbUOh9DZPuR6ToWsHW3rtdkCt7tdccUmKXDQ/viewform" target="_blank" rel="noopener">Got a photo or story? Send it in</a></div>`;
   $("#pages").innerHTML=intro+body+end;
   const jv=$("#jumpVid");if(jv)jv.onclick=()=>$("#vidFig").scrollIntoView({behavior:"smooth",block:"start"});
   $("#prev").disabled=n===1;$("#next").disabled=n===I.length;
