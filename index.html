@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hassan Family Comics</title>
-<meta name="description" content="18 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
+<meta name="description" content="19 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="18 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="19 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -130,7 +130,7 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">18 issues · 9 shorts · 1 very patient Mom</span>
+      <span class="burst">19 issues · 9 shorts · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <p id="hello"></p>
@@ -147,7 +147,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Eighteen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Nineteen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -265,7 +265,11 @@ const I=[
  {n:18,t:"Zan's Premiere: The Barmuda Triangle",s:"Every family dinner since 2015, Zan has 'stepped out for a call.'",vid:["clip9","Still at dinner. The garage is just foggy."],sk:[
   ["n18","Inside: Dad explains why the Steelers are a way of life, and Erik laughs like it's the funniest thing he has ever heard. Dad and Zan log it. Outside: Zan is 'still at dinner,' the garage is 'just foggy,' Max has the keys, and Gido is pointing him toward the Tiki Bar. Coco has seen this exact escape forty times."],
   ["n18b","The Barmuda Triangle. Two Mai Tais, two sundresses, one Samoyed in a lei. Gido is behind the bar. Through the window: a black Mercedes, one wheel on the curb."],
-  ["n18c","Midnight on the deck. Dad with a flashlight. Mom in the doorway. Coco as deputy. Ghost Ralphie on guard. Max is wearing a lei. \"Work call,\" huh?"]]}
+  ["n18c","Midnight on the deck. Dad with a flashlight. Mom in the doorway. Coco as deputy. Ghost Ralphie on guard. Max is wearing a lei. \"Work call,\" huh?"]]},
+ {n:19,t:"Aunt Hope's Premiere: Be Nice To Me",s:"Aunt Hope reads the comic. Aunt Hope has notes.",sk:[
+  ["n19","Aunt Hope finds out she's in the comic. Her first move is a text to Zan: \"Be nice to me!\" His move is to leave her on read."],
+  ["n19b","Flashback to the Hess ice rink. Aunt Hope glides like it's nothing. Little Zan is welded to the wall with a pretzel. She let go once. Once."],
+  ["n19c","Thanksgiving, fact-check edition. Aunt Hope rules on every family claim with her phone and a gold star. Dad calls it bullshit. Uncle Tom is still missing a sock."]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -315,7 +319,7 @@ function paintDone(){document.querySelectorAll(".issue").forEach(b=>b.classList.
 function paintHello(){
   const last=+store.get("hc_last")||0, btn=$("#startBtn");
   $("#hello").innerHTML=WHO&&WHO!=="Guest"?`Hi ${WHO.replace(/[<>&]/g,"")}! <button type="button" id="switch">Not ${WHO.replace(/[<>&]/g,"")}?</button>`:"";
-  if(last>1&&last<18){btn.textContent=`Continue: Issue #${last}`;btn.href="#issue-"+last}
+  if(last>1&&last<I.length){btn.textContent=`Continue: Issue #${last}`;btn.href="#issue-"+last}
   else{btn.textContent="Start with Issue #1";btn.href="#issue-1"}
 }
 $("#names").innerHTML=NAMES.map(n=>`<button type="button" data-name="${n}">${n}</button>`).join("");
@@ -328,7 +332,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 18 comics, 9 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 19 comics, 9 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
@@ -338,7 +342,7 @@ function show(n){
   const i=I.find(x=>x.n===n); if(!i){R.classList.remove("on");document.body.style.overflow="";return}
   const nx=I.find(x=>x.n===n+1);
   const count=i.cover?i.pages.length+1:i.sk.length;
-  $("#rTitle").textContent=`Issue #${i.n} of 18`;
+  $("#rTitle").textContent=`Issue #${i.n} of ${I.length}`;
   const intro=`<div class="intro"><b>${i.t}</b><span>${i.s}</span><small>${count} ${i.cover?"pages":"panels"}${i.vid?" + 1 animated short at the end":""}</small>${i.vid?`<button class="btn jump" type="button" id="jumpVid">Skip to the cartoon ↓</button>`:""}</div>`;
   const body=i.cover
    ? `<figure><img src="${i.cover}" alt="Cover of Issue ${i.n}"></figure>`+i.pages.map(p=>`<figure><img src="img/i${i.n}-${p}.jpg" alt="Issue ${i.n} page" loading="lazy"></figure>`).join("")
@@ -349,7 +353,7 @@ function show(n){
     +`<button class="btn alt" type="button" data-go="0">Back to all issues</button></div>`;
   $("#pages").innerHTML=intro+body+end;
   const jv=$("#jumpVid");if(jv)jv.onclick=()=>$("#vidFig").scrollIntoView({behavior:"smooth",block:"start"});
-  $("#prev").disabled=n===1;$("#next").disabled=n===18;
+  $("#prev").disabled=n===1;$("#next").disabled=n===I.length;
   R.classList.add("on");R.scrollTop=0;document.body.style.overflow="hidden";
   store.set("hc_last",String(n));track("open",n);
   if(seen)seen.disconnect();
@@ -368,7 +372,7 @@ document.addEventListener("click",e=>{
 });
 $("#close").onclick=()=>{location.hash="rack"};
 $("#prev").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.max(1,+m[0]-1)};
-$("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.min(18,+m[0]+1)};
+$("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.min(I.length,+m[0]+1)};
 document.addEventListener("keydown",e=>{if(!R.classList.contains("on"))return;if(e.key==="Escape")$("#close").click();if(e.key==="ArrowRight")$("#next").click();if(e.key==="ArrowLeft")$("#prev").click()});
 window.addEventListener("hashchange",route);
 paintDone();paintHello();
