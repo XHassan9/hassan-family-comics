@@ -74,6 +74,7 @@ h2{font-size:clamp(34px,4.5vw,52px);margin:0 0 6px}
 .rbar h3{margin:0;font-size:clamp(20px,3vw,30px);color:var(--gold)}
 .rbar .nav{display:flex;gap:8px;flex-wrap:wrap}
 .pages{max-width:900px;margin:0 auto;padding:18px 12px 60px;display:grid;gap:18px}
+.pages figure.clip video{width:100%;display:block;border:3px solid var(--line)}
 .pages figure{margin:0;background:#111;border:3px solid #333}
 .pages img{display:block;width:100%;height:auto}
 .pages figcaption{padding:10px 14px;font-size:16px;background:#fff7d6;color:#111;border-top:3px solid #000}
@@ -147,54 +148,67 @@ const I=[
  {n:3,t:"Turbo Time in Hilton Head",s:"Curbs, shrimp thieves and a one-armed golf swing.",cover:"img/i3-cover.jpg",pages:["p1","p2","p3","p4","p5","p6","p7"]},
  {n:4,t:"Cookie Season",s:"Sito's Christmas album and one suspicious halo.",cover:"img/i4-cover.jpg",pages:["p1","p2","p3","p4","p5"]},
  {n:5,t:"The Ghost of Gido",s:"Something's been drinking Dad's scotch...",cover:"img/i5-cover.jpg",pages:["p1","p2","p3","p4","p5"]},
- {n:6,t:"The Straitjacket Caper",s:"One marriage. One straitjacket. Zero regrets.",sk:[
+ {n:6,t:"The Straitjacket Caper",s:"One marriage. One straitjacket. Zero regrets.",vid:["clip6","Dad wanted a nap. Mom wanted revenge."],sk:[
   ["i6a","Dad naps in the lift recliner, mouth open, Steelers pregame on mute. Mom tiptoes in holding a straitjacket she ordered with <em>overnight shipping.</em> Coco: \"I didn't see anything.\""],
   ["i6b","Dad wakes up buckled in. The Johnnie Walker sits two inches out of reach. Mom is filming vertical for the group chat. Gido hasn't laughed this hard since 1987."],
   ["i6c","Max steps on the remote. The recliner tips Dad onto his tiptoes like a sad ballerina, right as the kids walk in. Regina: \"Going straight to the family album.\""],
   ["i6d","Sunset on the back deck. Mom feeds him scotch through a bendy straw. Ghost Ralphie growls at Dad. For once, Dad growls back."],
   ["h6thanks","<em>Thanksgiving:</em> Zan books a truckload between the turkey and the stuffing. TAZ carves the bird with a laser. Ghost Mistletoe steals Uncle Tom's sock. Charity shakes her head and Mom wears the gravy."]]},
- {n:7,t:"Curb Your Mercedes",s:"Every curb on Hilton Head has met Dad. Most of them twice.",sk:[
+ {n:7,t:"Curb Your Mercedes",s:"Every curb on Hilton Head has met Dad. Most of them twice.",vid:["clip5","Keys confiscated. Coco has the cart."],sk:[
   ["i7a","Sea Pines, 9:04 AM. Curb #4 of the day. Sparks fly. Mom grips the handle. Max hangs out the window like it's a parade."],
   ["i7b","The tire shop. One full wall of Dad's hubcaps. The mechanic hugs him like family, because Dad paid for his boat."],
   ["i7c","Coligny Plaza. Two wheels on the curb, bumper in the begonias. Dad steps out: \"Perfect park.\""],
   ["i7d","Keys confiscated. Coco drives the golf cart now, sunglasses on. Dad sulks in the passenger seat muttering about Mudgenoons."],
   ["h7friday","<em>Black Friday:</em> the Mercedes takes three spots, so Zan sends an HTL semi for the shopping bags. Dad: \"See? THIS is why you spend too much.\""]]},
- {n:8,t:"The Sibling Showdown",s:"Harbour Town. Three siblings. One putt. Zero honesty.",sk:[
+ {n:8,t:"The Sibling Showdown",s:"Harbour Town. Three siblings. One putt. Zero honesty.",vid:["clip4","Coco sinks it. Spencer takes the credit."],sk:[
   ["i8a","The 18th green under the lighthouse. Zan, Regina and Spencer bet the last of Sito's cookies. Dad referees. Nobody trusts the ref."],
   ["i8b","Max steals the ball. Everybody chases. Bubba and Bella take out three ankles. Dad yells \"MULLIGAN!\" at a dog."],
   ["i8c","Coco walks over and drops the slobbery ball in the cup. Spencer: \"That's mine. I called it.\""],
   ["i8d","Spencer wins, standing on a bucket so he's finally the tallest Hassan. Gido was clearly betting on him."],
   ["h8golf","<em>Turkey Day golf:</em> TAZ reads the green for Zan. Spencer yells \"CHEATING!\" Max runs off with the flagstick. Dad loses a ball to a gator and blames the Mudgenoons."]]},
- {n:9,t:"Sito's Christmas Album",s:"Then and now. Same pajamas. Fewer teeth missing.",sk:[
+ {n:9,t:"Sito's Christmas Album",s:"Then and now. Same pajamas. Fewer teeth missing.",vid:["clip3","Thanksgiving. One ghost dog. Zero manners."],sk:[
   ["i9a","Christmas Eve at Sito's. The album comes out. Max is already eating a bow. Dad is already asleep."],
   ["i9b","Flashback: three kids in plaid pajamas, Gido in a Santa hat, puppy chaos, and the most 1990s camera ever made."],
   ["i9c","The grown-ups recreate the photo. Max pulls the tree down behind them. Dad: \"That's coming out of Zan's allowance.\""],
   ["i9d","Late night. Sito and her album. Gido floats up and puts the star on top. \"Love you more.\""],
   ["h9xmas","<em>Christmas Eve:</em> HTL mission control. Santa's sleigh broke down, so Zan hitched it to a purple semi. On-time delivery: 98%. The other 2% was Max."]]},
- {n:10,t:"The Mudgenoon Awards",s:"Dad hosts. Dad presents. Dad somehow wins the worst award.",sk:[
+ {n:10,t:"The Mudgenoon Awards",s:"Dad hosts. Dad presents. Dad somehow wins the worst award.",vid:["clip2","The Golden Hubcap. Lifetime achievement in curbs."],sk:[
   ["i10a","The first annual Mudgenoon Awards, live from the back porch. Dress code: Steelers. Ralphie growls through the whole ceremony."],
   ["i10b","Best Instigator goes to Max. Coco is deeply offended and requests a recount."],
   ["i10c","Plot twist: Mom and Sito present Dad with the Golden Hubcap for Lifetime Achievement in Curbs. Standing ovation. Dad demands a recount."],
   ["h10nye","<em>New Year's Eve:</em> Zan finally closes the laptop at 11:59 and smells faintly of \"the garage.\" Uncle Tom points at ghost Ralphie. Ralphie growls. Mom kisses Dad. Ralphie growls louder."]]},
- {n:11,t:"Dad vs. the Contractors",s:"Mom's away. The backyard is gone. A ghost is the foreman.",sk:[
+ {n:11,t:"Dad vs. the Contractors",s:"Mom's away. The backyard is gone. A ghost is the foreman.",vid:["clip1","Mom left for one weekend. A ghost runs the job site."],sk:[
   ["j11a","Mom leaves for the weekend. Dad has a blueprint, one good arm and zero supervision. Gido floats in wearing a hard hat."],
   ["j11b","The invoice arrives. It's longer than the deck. <em>\"THIS IS BULLSHIT!\"</em> Gido whispers: \"Double or nothing.\""],
   ["j11c","Gido takes over as foreman. Tools fly. The crew quits. Dad supervises from a lawn chair with a Johnnie Walker."],
   ["j11d","The reveal: a movie screen, a tiki bar and a fire pit. Zan pulls up in the Nissan Z. Mom's taxi is right behind him. Everybody stops breathing."]]},
  {n:12,t:"Gido's Poker Night",s:"The house always wins. The house is a ghost.",sk:[
-  ["k12a","Gido deals himself four aces. Again. Dad bets the Mercedes. Charity shakes her head and the drool hits the ceiling fan. Mom quietly takes the pot."]]},
+  ["k12a","Gido deals himself four aces. Again. Dad bets the Mercedes. Charity shakes her head and the drool hits the ceiling fan. Mom quietly takes the pot."],
+  ["k12b","Dad's losing to a man who has been dead for years. Zan is also losing, on an app. Mom has not lost a hand since 1987."],
+  ["k12c","Dawn. Dad is asleep on his cards. Gido is still counting. Mom's robe has a pocket full of Dad's money. Coco holds the last chip hostage."]]},
  {n:13,t:"Dad's Money Lessons",s:"Dad says Zan spends too much. Dad just bought a movie screen.",sk:[
-  ["k13a","\"You are IRRESPONSIBLE with money!\" says the man standing in front of a backyard movie theater, a tiki bar and a contractor invoice taller than he is. Zan is holding one tiny shopping bag. Gido knows exactly which bar the money went to. It rhymes with Barmuda Triangle."]]},
+  ["k13a","\"You are IRRESPONSIBLE with money!\" says the man standing in front of a backyard movie theater, a tiki bar and a contractor invoice taller than he is. Zan is holding one tiny shopping bag. Gido knows exactly which bar the money went to. It rhymes with Barmuda Triangle."],
+  ["k13b","Ribbon cutting on the tiki bar. The invoice unrolls across the lawn and into the lagoon. Gido measures it. Mom cannot look."],
+  ["k13c","Dad's office. A pie chart. A pointer. A framed photo of the Mercedes with the dented bumper. Zan is on a \"work call\" under the desk. Gido would like to discuss the hubcap budget."]]},
  {n:14,t:"Ralphie Only Loves Mom",s:"One ghost dog. One favorite human. Everyone else is on notice.",sk:[
-  ["k14a","Ghost Ralphie melts into Mom's lap like a puppy. Dad reaches over. One finger. Ralphie snarls. The kids dive behind the armchair. Coco: \"Told you.\""]]},
- {n:15,t:"Dinner at Giuseppi's",s:"One bottle of wine. One furious waiter. Zero chance we're welcome back.",sk:[
-  ["n15","Dad sends back a $90 bottle because it \"tastes Italian.\" Mom plans her new identity. Regina goes live. Spencer steals meatballs. Zan is \"on a work call\" under the table, which is how he always leaves for the Tiki Bar. Coco orders off the kids' menu."]]},
- {n:16,t:"Regina's Premiere: Meet Erik",s:"She's the baby. He's trying SO hard. Dad has a clipboard.",sk:[
-  ["n16","Regina brings Erik home. Dad sets up an interrogation table on the deck. Zan and Spencer work security. Erik brought seltzers, wore a Steelers hat he bought that morning, and said \"go Steelers\" like a question. Dad and Zan exchange The Look. Gido is taking bets on the wedding at 8 to 1."]]},
+  ["k14a","Ghost Ralphie melts into Mom's lap like a puppy. Dad reaches over. One finger. Ralphie snarls. The kids dive behind the armchair. Coco: \"Told you.\""],
+  ["k14b","Dad tries one finger. One. Ralphie's eyes glow. Regina is already filming. Spencer is behind the recliner. Coco: \"Told you AGAIN.\""],
+  ["k14c","Later. Mom, tea, and a ghost dog purring in her lap with little hearts. Dad in the doorway with a bandaged finger. Gido pats his shoulder. The dogs brought popcorn."]]},
+ {n:15,t:"Dinner at Giuseppi's",s:"One bottle of wine. One furious waiter. Zero chance we're welcome back.",vid:["clip8","The wine went back. So did our reservation."],sk:[
+  ["n15","Dad sends back a $90 bottle because it \"tastes Italian.\" Mom plans her new identity. Regina goes live. Spencer steals meatballs. Zan is \"on a work call\" under the table, which is how he always leaves for the Tiki Bar. Coco orders off the kids' menu."],
+  ["n15b","Escorted out. Dad is still reviewing the tiramisu. Mom is pretending to be a different family. Spencer's pockets are full of breadsticks. Zan is already across the street. Max has the tablecloth. Coco called a cab."]]},
+ {n:16,t:"Regina's Premiere: Meet Erik",s:"She's the baby. He's trying SO hard. Dad has a clipboard.",vid:["clip7","He brought seltzers. Dad brought a clipboard."],sk:[
+  ["n16","Regina brings Erik home. Dad sets up an interrogation table on the deck. Zan and Spencer work security. Erik brought seltzers, wore a Steelers hat he bought that morning, and said \"go Steelers\" like a question. Dad and Zan exchange The Look. Gido is taking bets on the wedding at 8 to 1."],
+  ["n16b","Erik mans the grill in a Steelers apron with the tag still on. The flames are \"part of the flavor.\" Dad and Zan stand shoulder to shoulder with The Look. Spencer eats whatever Erik drops."],
+  ["n16c","Midnight. Erik fell asleep holding two seltzers under a Steelers blanket. Dad writes one word on the clipboard and almost smiles. Zan gives the tiniest thumbs-up. Regina: \"Don't tell him. He'll never leave.\""]]},
  {n:17,t:"Spencer's Premiere: Who's Short Now?",s:"A lifetime at the bottom of the height wall. Today, a step stool.",sk:[
-  ["n17","Spencer climbs the step stool and declares victory. Dad measures anyway. Mom holds the ladder. Max eats the ladder. Gido approves. Regina reminds everyone she is still the baby."]]},
- {n:18,t:"Zan's Premiere: The Barmuda Triangle",s:"Every family dinner since 2015, Zan has 'stepped out for a call.'",sk:[
-  ["n18","Inside: Dad explains why the Steelers are a way of life, and Erik laughs like it's the funniest thing he has ever heard. Dad and Zan log it. Outside: Zan is 'still at dinner,' the garage is 'just foggy,' Max has the keys, and Gido is pointing him toward the Tiki Bar. Coco has seen this exact escape forty times."]]}
+  ["n17","Spencer climbs the step stool and declares victory. Dad measures anyway. Mom holds the ladder. Max eats the ladder. Gido approves. Regina reminds everyone she is still the baby."],
+  ["n17b","Dad measures. Even on the stool, Spencer is shorter than Zan standing on the floor. Max has eaten one stool leg. Max is still eating."],
+  ["n17c","The stool goes. Spencer goes. Dad catches him, briefly. Max leaves with the leg. Coco does not move, because this happens every Thanksgiving."]]},
+ {n:18,t:"Zan's Premiere: The Barmuda Triangle",s:"Every family dinner since 2015, Zan has 'stepped out for a call.'",vid:["clip9","Still at dinner. The garage is just foggy."],sk:[
+  ["n18","Inside: Dad explains why the Steelers are a way of life, and Erik laughs like it's the funniest thing he has ever heard. Dad and Zan log it. Outside: Zan is 'still at dinner,' the garage is 'just foggy,' Max has the keys, and Gido is pointing him toward the Tiki Bar. Coco has seen this exact escape forty times."],
+  ["n18b","The Barmuda Triangle. Two Mai Tais, two sundresses, one Samoyed in a lei. Gido is behind the bar. Through the window: a black Mercedes, one wheel on the curb."],
+  ["n18c","Midnight on the deck. Dad with a flashlight. Mom in the doorway. Coco as deputy. Ghost Ralphie on guard. Max is wearing a lei. \"Work call,\" huh?"]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -233,7 +247,8 @@ function show(n){
   $("#rTitle").textContent=`Issue #${i.n}: ${i.t}`;
   $("#pages").innerHTML=i.cover
    ? `<figure><img src="${i.cover}" alt="Cover of Issue ${i.n}"></figure>`+i.pages.map(p=>`<figure><img src="img/i${i.n}-${p}.jpg" alt="Issue ${i.n} page" loading="lazy"></figure>`).join("")
-   : `<div class="note">Rated M for Mudgenoon. Scroll to read.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("");
+   : `<div class="note">Rated M for Mudgenoon. Scroll to read.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("")
+     +(i.vid?`<figure class="clip"><div class="note">Now in motion. Sound on.</div><video src="vid/${i.vid[0]}.mp4" controls playsinline preload="metadata"></video><figcaption>${i.vid[1]}</figcaption></figure>`:"");
   $("#prev").disabled=n===1;$("#next").disabled=n===18;
   R.classList.add("on");R.scrollTop=0;document.body.style.overflow="hidden";
 }
