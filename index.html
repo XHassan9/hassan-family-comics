@@ -10,10 +10,10 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Hassan Comics">
-<meta name="description" content="23 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
+<meta name="description" content="25 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="23 issues. 10 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="25 issues. 10 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -143,7 +143,7 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">23 issues · 9 shorts · 1 very patient Mom</span>
+      <span class="burst">25 issues · 9 shorts · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <p id="hello"></p>
@@ -163,7 +163,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Twenty-three issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Twenty-five issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -318,6 +318,20 @@ const I=[
   ["n23d","The cart has one bad wheel and one bad passenger. Set sail for the car."],
   ["n23e","Greg called shotgun. Dad is in the back. <em>\"This is bullshit.\"</em> Gido says Greg has a great poker face."],
   ["n23f","Dad walks home. Greg can have the house. It's nine miles."]]},
+ {n:24,t:"The Tip Screen",s:"Dad vs. the twenty-five percent. Spencer tips forty. Nobody tips the moon.",sk:[
+  ["n24","A small black coffee. <em>\"TWENTY-FIVE PERCENT?! For POURING?!\"</em>"],
+  ["n24b","Spencer tips forty percent. She looked lonely. Dad needs to sit down."],
+  ["n24c","Dinner. There's a kitchen fee. Spencer is building the bread a gated community."],
+  ["n24d","Spencer drew the moon so Dad would have something to tip. Sito says it's art."],
+  ["n24e","<em>\"THIS IS BULLSHIT!\"</em> The whole room turns around. Ralphie cleans a plate. Spencer waves."],
+  ["n24f","Later, in secret, Dad tips the valet fifty bucks. Spencer saw. He always does."]]},
+ {n:25,t:"Steelers Sunday",s:"Dad yells at the TV. Spencer unplugs it. Then they score.",sk:[
+  ["n25","Sunday. Dad has been coaching the Steelers through the TV since 1974."],
+  ["n25b","Spencer is the halftime show. The quarterback is thinking about soup."],
+  ["n25c","Holding?! Dad's on the couch. Zan has the replay. Mom has a magazine."],
+  ["n25d","Spencer unplugs the TV to give it a rest. <em>\"PLUG IT IN! THIS IS BULLSHIT!\"</em>"],
+  ["n25e","Thirty seconds left. Touchdown. Dad loves this family. Mom remembers ten minutes ago."],
+  ["n25f","Dad's too happy, so he goes golfing. Gido will see him next week."]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -381,7 +395,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 23 comics, 10 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 25 comics, 10 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
