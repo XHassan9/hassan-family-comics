@@ -100,7 +100,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Issues 1 to 5 are finished. Issues 6 to 14 are in the sketchbook: every panel is drawn, and speech bubbles come next.</p>
+    <p class="sub">Fourteen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -116,10 +116,10 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="videos">
   <div class="wrap">
     <h2>Coming soon: the videos</h2>
-    <p class="sub">Six clips are made and sitting in your Runway account (session: Recliner Launch Chaos Animation). More coming.</p>
+    <p class="sub">Animated clips with voiceovers are in the works. Dad has not approved any of them.</p>
     <div class="budget">
-      <div>185 credits used<small>5 budget clips and 1 premium</small></div>
-      <div>559 credits left<small>in the Runway account</small></div>
+      <div>6 clips<small>filmed on location</small></div>
+      <div>0 permits<small>obtained</small></div>
     </div>
     <div class="vids" id="vidGrid"></div>
   </div>
@@ -215,17 +215,17 @@ const $=s=>document.querySelector(s);
 $("#rackGrid").innerHTML=I.map(i=>{
   const img=i.cover||`img/${i.sk[0][0]}.jpg`;
   return `<button class="issue" type="button" data-n="${i.n}" aria-label="Read Issue ${i.n}: ${i.t}">
-   <div class="art ${i.cover?'':'wide'}"><img src="${img}" alt="" loading="lazy"><span class="no">#${i.n}</span>${i.cover?'':`<span class="tag">Sketchbook</span>`}</div>
+   <div class="art ${i.cover?'':'wide'}"><img src="${img}" alt="" loading="lazy"><span class="no">#${i.n}</span>${i.cover?'':`<span class="tag">New</span>`}</div>
    <div class="meta"><b>${i.t}</b><span>${i.s}</span></div></button>`}).join("");
 $("#castGrid").innerHTML=CAST.map(c=>`<div class="who ${c[2]?'ghost':''}"><img src="img/av/${c[0].toLowerCase().replace(' ','-')}.jpg" alt="${c[0]}" loading="lazy"><div><b>${c[0]}${c[2]?' (ghost)':''}</b><span>${c[1]}</span></div></div>`).join("");
-$("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><img src="img/${v[0]}.jpg" alt="" loading="lazy"><div><b>${k+1}. ${v[1]}</b><span>${v[2]} · about 25 credits</span></div></div>`).join("");
+$("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><img src="img/${v[0]}.jpg" alt="" loading="lazy"><div><b>${k+1}. ${v[1]}</b><span>${v[2]}</span></div></div>`).join("");
 const R=$("#reader");
 function show(n){
   const i=I.find(x=>x.n===n); if(!i){R.classList.remove("on");document.body.style.overflow="";return}
   $("#rTitle").textContent=`Issue #${i.n}: ${i.t}`;
   $("#pages").innerHTML=i.cover
    ? `<figure><img src="${i.cover}" alt="Cover of Issue ${i.n}"></figure>`+i.pages.map(p=>`<figure><img src="img/i${i.n}-${p}.jpg" alt="Issue ${i.n} page" loading="lazy"></figure>`).join("")
-   : `<div class="note">Sketchbook preview: panels are drawn, speech bubbles come next.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("");
+   : `<div class="note">Rated M for Mudgenoon. Scroll to read.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("");
   $("#prev").disabled=n===1;$("#next").disabled=n===14;
   R.classList.add("on");R.scrollTop=0;document.body.style.overflow="hidden";
 }
