@@ -13,7 +13,7 @@
 <meta name="description" content="25 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="25 issues. 10 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="25 issues. 13 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -311,21 +311,21 @@ const I=[
   ["n22f","Dad can't find his glasses. Spencer can see through time. Sito knows. Gido is proud."],
   ["n22g","<em>\"THIS IS BULLSHIT! I'm going for a drive!\"</em> The cart is warm. The ghosts called shotgun."],
   ["n22h","He was mad for nine holes. Then he took the wheel. Still bullshit, he says. He is smiling."]]},
- {n:23,t:"Unexpected Item",s:"Dad vs. the self-checkout. Spencer brings Greg. Greg is a watermelon.",sk:[
+ {n:23,t:"Unexpected Item",s:"Dad vs. the self-checkout. Spencer brings Greg. Greg is a watermelon.",vid:["clip13","Unexpected Item. Animated, with voices. Sound on."],sk:[
   ["n23","Self-checkout. <em>\"UNEXPECTED ITEM?!\"</em> Spencer is accessorizing Dad's back. Mom found a lane with a human."],
   ["n23b","This is Greg. Greg is family. You cannot weigh family."],
   ["n23c","Eleven dollars for grapes Spencer already ate. Grapes are just raisins that believe in themselves."],
   ["n23d","The cart has one bad wheel and one bad passenger. Set sail for the car."],
   ["n23e","Greg called shotgun. Dad is in the back. <em>\"This is bullshit.\"</em> Gido says Greg has a great poker face."],
   ["n23f","Dad walks home. Greg can have the house. It's nine miles."]]},
- {n:24,t:"The Tip Screen",s:"Dad vs. the twenty-five percent. Spencer tips forty. Nobody tips the moon.",sk:[
+ {n:24,t:"The Tip Screen",s:"Dad vs. the twenty-five percent. Spencer tips forty. Nobody tips the moon.",vid:["clip12","The Tip Screen. Animated, with voices. Sound on."],sk:[
   ["n24","A small black coffee. <em>\"TWENTY-FIVE PERCENT?! For POURING?!\"</em>"],
   ["n24b","Spencer tips forty percent. She looked lonely. Dad needs to sit down."],
   ["n24c","Dinner. There's a kitchen fee. Spencer is building the bread a gated community."],
   ["n24d","Spencer drew the moon so Dad would have something to tip. Sito says it's art."],
   ["n24e","<em>\"THIS IS BULLSHIT!\"</em> The whole room turns around. Ralphie cleans a plate. Spencer waves."],
   ["n24f","Later, in secret, Dad tips the valet fifty bucks. Spencer saw. He always does."]]},
- {n:25,t:"Steelers Sunday",s:"Dad yells at the TV. Spencer unplugs it. Then they score.",sk:[
+ {n:25,t:"Steelers Sunday",s:"Dad yells at the TV. Spencer unplugs it. Then they score.",vid:["clip11","Steelers Sunday. Animated, with voices. Sound on."],sk:[
   ["n25","Sunday. Dad has been coaching the Steelers through the TV since 1974."],
   ["n25b","Spencer is the halftime show. The quarterback is thinking about soup."],
   ["n25c","Holding?! Dad's on the couch. Zan has the replay. Mom has a magazine."],
@@ -355,7 +355,7 @@ const CAST=[
  ["Ralphie","Black dog, white chest. Growls at everyone. Only loves Mom. Hates Dad's finger specifically.",1],
  ["Mistletoe","Shih Tzu. Professional sock thief. Uncle Tom is her main supplier.",1]
 ];
-const VIDS=[["clip10","It's Turbo Time","Now with voices. Every family member, in their own voice."],["clip9","The Barmuda Triangle","'Still at dinner.' The garage is 'just foggy.'"],["clip7","Meet Erik","He brought seltzers. Dad brought a clipboard."],["clip8","Giuseppi's","The wine went back. So did our reservation."],["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
+const VIDS=[["clip11","Steelers Sunday","Animated. Dad vs. the TV. Spencer vs. the plug."],["clip12","The Tip Screen","Animated. Twenty-five percent?! For POURING?!"],["clip13","Unexpected Item","Animated. Greg called shotgun."],["clip10","It's Turbo Time","Now with voices, and the golf cart actually drives."],["clip9","The Barmuda Triangle","'Still at dinner.' The garage is 'just foggy.'"],["clip7","Meet Erik","He brought seltzers. Dad brought a clipboard."],["clip8","Giuseppi's","The wine went back. So did our reservation."],["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
 const SOON=[["\u26FD","The Christmas Special","How Uncle Tom met Aunt Hope at a gas station. Aidan and Ava tell it. Ghost Mistletoe corrects them."],["\uD83D\uDC7B","Charity vs. Ralphie","Gido has a bodyguard in the afterlife. Ralphie has a twenty-year grudge. Sito is dealing the cards."]];
 const $=s=>document.querySelector(s);
 $("#rackGrid").innerHTML=I.map(i=>{
@@ -395,7 +395,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 25 comics, 10 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 25 comics, 13 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
