@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hassan Family Comics</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#10224a">
+<link rel="icon" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hassan Comics">
 <meta name="description" content="20 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
@@ -86,7 +92,7 @@ h2{font-size:clamp(34px,4.5vw,52px);margin:0 0 6px}
 .pages figure.clip video{width:100%;display:block;border:3px solid var(--line)}
 .pages figure{margin:0;background:#111;border:3px solid #333;position:relative}
 .pages figure.pnl{counter-increment:p;border-color:#000}
-.pages figure.pnl::before{content:counter(p);position:absolute;top:8px;left:8px;z-index:1;background:var(--gold);color:#000;font:400 22px/1 Bangers,sans-serif;padding:4px 10px;border:3px solid #000}
+.pages figure.pnl figcaption::before{content:counter(p);display:inline-block;vertical-align:2px;margin-right:10px;background:var(--gold);color:#000;font:900 17px/1 Inter,system-ui,sans-serif;padding:4px 9px;border:3px solid #000}
 .pages img{display:block;width:100%;height:auto}
 .pages figcaption{padding:12px 16px;font-size:19px;line-height:1.5;background:#fff7d6;color:#111;border-top:3px solid #000}
 .pages figcaption em{font-style:normal;font-weight:900;color:var(--red)}
@@ -138,6 +144,8 @@ footer{font-size:14px;color:var(--muted)}
         <a class="btn" id="startBtn" href="#issue-1">Start with Issue #1</a>
         <button class="btn ghostbtn" id="share" type="button">Share with family</button>
         <a class="btn ghostbtn" id="memory" href="https://docs.google.com/forms/d/e/1FAIpQLSfAeoM9KwQ9EhcbUOh9DZPuR6ToWsHW3rtdkCt7tdccUmKXDQ/viewform" target="_blank" rel="noopener">Share a photo or memory</a>
+        <button class="btn ghostbtn" id="install" type="button" hidden>Get the app</button>
+        <button class="btn ghostbtn" id="alerts" type="button" hidden>New episode alerts</button>
       </div>
       <ul class="how"><li>1. Tap a cover</li><li>2. Scroll down to read</li><li>3. Tap the red button for the next one</li></ul>
     </div>
@@ -385,6 +393,41 @@ $("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="i
 document.addEventListener("keydown",e=>{if(!R.classList.contains("on"))return;if(e.key==="Escape")$("#close").click();if(e.key==="ArrowRight")$("#next").click();if(e.key==="ArrowLeft")$("#prev").click()});
 window.addEventListener("hashchange",route);
 paintDone();paintHello();
+/* app install + new-episode alerts */
+(()=>{
+  let dp=null;const ins=$("#install"),al=$("#alerts");
+  const standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  if("serviceWorker" in navigator&&location.protocol==="https:"||location.hostname==="localhost")navigator.serviceWorker.register("sw.js").catch(()=>{});
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  if(!standalone){
+    addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;ins.hidden=false});
+    if(ios){ins.hidden=false}
+    ins.onclick=async()=>{
+      if(dp){dp.prompt();await dp.userChoice;dp=null;ins.hidden=true}
+      else if(ios)toast("On iPhone: tap the Share icon, then Add to Home Screen");
+      else toast("Use your browser menu, then Install app or Add to Home Screen")
+    };
+  }
+  addEventListener("appinstalled",()=>{ins.hidden=true;toast("Installed! Look for the H on your home screen")});
+  if("Notification" in window&&"serviceWorker" in navigator&&(!ios||standalone)){
+    const on=()=>store.get("hc_alerts")==="1"&&Notification.permission==="granted";
+    const paint=()=>{al.hidden=false;al.textContent=on()?"Alerts on ✓":"New episode alerts"};
+    paint();
+    al.onclick=async()=>{
+      if(on()){store.set("hc_alerts","0");paint();toast("Alerts off");return}
+      const p=await Notification.requestPermission();
+      if(p==="granted"){store.set("hc_alerts","1");store.set("hc_seen",String(I.length));paint();toast("You'll get a ping when a new episode is out")}
+      else toast("Alerts are blocked in your browser settings")
+    };
+    const seen=+store.get("hc_seen")||0;
+    if(on()&&seen&&I.length>seen){
+      const n=I[I.length-1];
+      navigator.serviceWorker.ready.then(r=>r.showNotification("New Hassan Family episode",{body:`Issue #${n.n}: ${n.t}`,icon:"icons/icon-192.png",badge:"icons/favicon-64.png"}));
+    }
+    if(on())store.set("hc_seen",String(I.length));
+  }
+})();
+
 if(WHO){track("visit")}else{$("#gate").classList.add("on")}
 route();
 }
