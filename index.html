@@ -88,7 +88,7 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">14 issues · 1 very patient Mom</span>
+      <span class="burst">17 issues · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <a class="btn" href="#issue-1">Start with Issue #1</a>
@@ -100,7 +100,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Fourteen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Seventeen issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -186,7 +186,13 @@ const I=[
  {n:13,t:"Dad's Money Lessons",s:"Dad says Zan spends too much. Dad just bought a movie screen.",sk:[
   ["k13a","\"You are IRRESPONSIBLE with money!\" says the man standing in front of a backyard movie theater, a tiki bar and a contractor invoice taller than he is. Zan is holding one tiny shopping bag."]]},
  {n:14,t:"Ralphie Only Loves Mom",s:"One ghost dog. One favorite human. Everyone else is on notice.",sk:[
-  ["k14a","Ghost Ralphie melts into Mom's lap like a puppy. Dad reaches over. One finger. Ralphie snarls. The kids dive behind the armchair. Coco: \"Told you.\""]]}
+  ["k14a","Ghost Ralphie melts into Mom's lap like a puppy. Dad reaches over. One finger. Ralphie snarls. The kids dive behind the armchair. Coco: \"Told you.\""]]},
+ {n:15,t:"Dinner at Giuseppi's",s:"One bottle of wine. One furious waiter. Zero chance we're welcome back.",sk:[
+  ["n15","Dad sends back a $90 bottle because it \"tastes Italian.\" Mom plans her new identity. Regina goes live. Spencer steals meatballs. Max takes the tablecloth. Coco orders off the kids' menu."]]},
+ {n:16,t:"Regina's Premiere: Meet Erik",s:"She's the baby. He's the new guy. Dad has a clipboard.",sk:[
+  ["n16","Regina brings Erik home. Dad sets up an interrogation table on the deck. Zan and Spencer work security. Erik brought seltzers, which Dad considers a red flag. Gido is already taking bets on the wedding."]]},
+ {n:17,t:"Spencer's Premiere: Who's Short Now?",s:"A lifetime at the bottom of the height wall. Today, a step stool.",sk:[
+  ["n17","Spencer climbs the step stool and declares victory. Dad measures anyway. Mom holds the ladder. Max eats the ladder. Gido approves. Regina reminds everyone she is still the baby."]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -194,7 +200,7 @@ const CAST=[
  ["Sito","Big glasses, endless cookies, a photo album longer than the Bible. Says \"love you more\" like it's a threat."],
  ["Zan","Runs HTL and TAZ, usually during dinner. Drives the black Nissan Z. \"Irresponsible with money,\" according to a man with a tiki bar."],
  ["Regina","The youngest, and she will remind you. Phone always filming. Frenchie mom. Rules do not apply to her. Marrying Erik next year, God help him."],
- ["Erik","Regina's fiancé. Gray beanie, cream sherpa, a seltzer in each hand. Still in his probationary period with Dad."],
+ ["Erik","Regina's fiancé. Gray beanie, cream sherpa, a seltzer in each hand. Survived the deck interrogation (barely). Still in his probationary period with Dad."],
  ["Spencer","The shortest Hassan. Will claim any putt, any cookie and any win. Owns a bucket specifically for photos."],
  ["Aunt Hope","RBG shirt, cropped hair, first to laugh and the loudest. Will fact-check your Thanksgiving opinions."],
  ["Uncle Tom","Steelers zip-up. Has lost more socks than Dad has hubcaps. The only one who can see the ghosts."],
@@ -226,14 +232,14 @@ function show(n){
   $("#pages").innerHTML=i.cover
    ? `<figure><img src="${i.cover}" alt="Cover of Issue ${i.n}"></figure>`+i.pages.map(p=>`<figure><img src="img/i${i.n}-${p}.jpg" alt="Issue ${i.n} page" loading="lazy"></figure>`).join("")
    : `<div class="note">Rated M for Mudgenoon. Scroll to read.</div>`+i.sk.map(p=>`<figure><img src="img/${p[0]}.jpg" alt="" loading="lazy"><figcaption>${p[1]}</figcaption></figure>`).join("");
-  $("#prev").disabled=n===1;$("#next").disabled=n===14;
+  $("#prev").disabled=n===1;$("#next").disabled=n===17;
   R.classList.add("on");R.scrollTop=0;document.body.style.overflow="hidden";
 }
 function route(){const m=location.hash.match(/^#issue-(\d+)$/);show(m?+m[1]:0)}
 document.addEventListener("click",e=>{const b=e.target.closest(".issue");if(b)location.hash="issue-"+b.dataset.n});
 $("#close").onclick=()=>{location.hash="rack"};
 $("#prev").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.max(1,+m[0]-1)};
-$("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.min(14,+m[0]+1)};
+$("#next").onclick=()=>{const m=location.hash.match(/\d+/);if(m)location.hash="issue-"+Math.min(17,+m[0]+1)};
 document.addEventListener("keydown",e=>{if(!R.classList.contains("on"))return;if(e.key==="Escape")$("#close").click();if(e.key==="ArrowRight")$("#next").click();if(e.key==="ArrowLeft")$("#prev").click()});
 window.addEventListener("hashchange",route);route();
 }
