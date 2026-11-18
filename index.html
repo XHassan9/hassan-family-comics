@@ -10,10 +10,10 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Hassan Comics">
-<meta name="description" content="20 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
+<meta name="description" content="21 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="20 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="21 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -136,7 +136,7 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">20 issues · 9 shorts · 1 very patient Mom</span>
+      <span class="burst">21 issues · 9 shorts · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <p id="hello"></p>
@@ -156,7 +156,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Twenty issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Twenty-one issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -285,7 +285,16 @@ const I=[
  {n:20,t:"Christmas at the Hess Rink",s:"A flashback. Sito, Aunt Hope, Uncle Tom, and three very small grandkids on skates.",sk:[
   ["n20","Christmas week, 1990-something. Sito guards the wall with a thermos and pretzels. Aunt Hope tows Zan, Spencer and Regina. Uncle Tom is on his own."],
   ["n20b","Uncle Tom goes down. Aunt Hope lands on him laughing. Three grandkids slide past like penguins. Sito has both hands on her cheeks."],
-  ["n20c","Snack bar, hot chocolate, a soft pretzel, one disposable camera. Uncle Tom has a bandage and no regrets."]]}
+  ["n20c","Snack bar, hot chocolate, a soft pretzel, one disposable camera. Uncle Tom has a bandage and no regrets."]]},
+ {n:21,t:"The Sock Under the Table",s:"Thanksgiving in Hilton Head. Uncle Tom cooks, Dad reads the receipt, and two ghost dogs are up to something.",sk:[
+  ["n21","6 a.m., Hilton Head. Dad finds the cranberry sauce on the receipt. Mom drinks her coffee. Uncle Tom has the bird."],
+  ["n21b","Uncle Tom shushes somebody nobody else can see. Ava is down one sock. Ghost Mistletoe is up one."],
+  ["n21c","Dinner. The table starts choking. Aidan wants answers. Dad wants to know who paid for it."],
+  ["n21d","Ghost Gido pulls up a chair. Ghost Ralphie still hasn't forgiven him. Sito tells him to wait his turn. Aidan just feels a draft."],
+  ["n21e","Five socks under the table. Uncle Tom is talking to the floor again. Dad doesn't want to hear about it."],
+  ["n21f","Flashback to the old house. Dad carves, Mom beams, and three little Hassans can't sit still."],
+  ["n21g","Uncle Tom raises a glass to Dad and the family he built. Dad tears up. Aidan tries to price the love."],
+  ["n21h","And then Dad remembers the grocery bill. Mom says sit down. Spencer has a turkey on his head. Ava's sock is still missing."]]}
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -348,7 +357,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 20 comics, 9 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 21 comics, 9 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
