@@ -50,6 +50,13 @@ a{color:inherit}
 h2{font-size:clamp(34px,4.5vw,52px);margin:0 0 6px}
 .sub{color:var(--muted);margin:0 0 24px}
 .rack{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:22px}
+.soon{position:relative;display:flex;flex-direction:column;background:var(--card);border:4px dashed var(--line);box-shadow:6px 6px 0 var(--line)}
+.soon .art{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:repeating-linear-gradient(45deg,var(--navy),var(--navy) 14px,#162c5e 14px,#162c5e 28px);border-bottom:4px solid var(--line)}
+.soon .art i{font-style:normal;font-size:38px;line-height:1}
+.soon .art em{font-style:normal;font-family:Bangers,sans-serif;font-size:20px;line-height:1.1;white-space:nowrap;letter-spacing:1px;background:var(--gold);color:#000;padding:3px 12px;border:3px solid #000;transform:rotate(-3deg)}
+.soon .meta{padding:10px 12px 14px;display:flex;flex-direction:column;gap:4px}
+.soon .meta b{font-family:Bangers,sans-serif;font-size:22px;letter-spacing:.5px;line-height:1.05}
+.soon .meta span{font-size:14px;line-height:1.35;color:var(--muted)}
 .issue{position:relative;display:flex;flex-direction:column;background:var(--card);border:4px solid var(--line);box-shadow:6px 6px 0 var(--line);cursor:pointer;text-align:left;padding:0;color:inherit;font:inherit;transition:transform .15s}
 .issue:hover{transform:translate(-2px,-4px) rotate(-.6deg)}
 .issue .art{aspect-ratio:3/4;overflow:hidden;background:#000;position:relative}
@@ -319,12 +326,13 @@ const CAST=[
  ["Mistletoe","Shih Tzu. Professional sock thief. Uncle Tom is her main supplier.",1]
 ];
 const VIDS=[["clip9","The Barmuda Triangle","'Still at dinner.' The garage is 'just foggy.'"],["clip7","Meet Erik","He brought seltzers. Dad brought a clipboard."],["clip8","Giuseppi's","The wine went back. So did our reservation."],["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
+const SOON=[["\u26FD","The Christmas Special","How Uncle Tom met Aunt Hope at a gas station. Aidan and Ava tell it. Ghost Mistletoe corrects them."],["\uD83D\uDC7B","Charity vs. Ralphie","Gido has a bodyguard in the afterlife. Ralphie has a twenty-year grudge. Sito is dealing the cards."]];
 const $=s=>document.querySelector(s);
 $("#rackGrid").innerHTML=I.map(i=>{
   const img=i.cover||`img/${i.sk[0][0]}.jpg`;
   return `<button class="issue" type="button" data-n="${i.n}" aria-label="Read Issue ${i.n}: ${i.t}">
    <div class="art ${i.cover?'':'wide'}"><img src="${img}" alt="" loading="lazy"><span class="no">#${i.n}</span>${i.cover?'':`<span class="tag">New</span>`}</div>
-   <div class="meta"><b>${i.t}</b><span>${i.s}</span></div></button>`}).join("");
+   <div class="meta"><b>${i.t}</b><span>${i.s}</span></div></button>`}).join("")+SOON.map(c=>`<div class="soon"><div class="art"><i aria-hidden="true">${c[0]}</i><em>Coming soon</em></div><div class="meta"><b>${c[1]}</b><span>${c[2]}</span></div></div>`).join("");
 $("#castGrid").innerHTML=CAST.map(c=>`<div class="who ${c[2]?'ghost':''}"><img src="img/av/${c[0].toLowerCase().replace(' ','-')}.jpg" alt="${c[0]}" loading="lazy"><div><b>${c[0]}${c[2]?' (ghost)':''}</b><span>${c[1]}</span></div></div>`).join("");
 $("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><video src="vid/${v[0]}.mp4" controls playsinline preload="metadata" style="width:100%;display:block;border:3px solid var(--line)"></video><div><b>${k+1}. ${v[1]}</b><span>${v[2]}</span></div></div>`).join("");
 const R=$("#reader");
