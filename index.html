@@ -10,10 +10,10 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Hassan Comics">
-<meta name="description" content="22 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
+<meta name="description" content="23 issues and 9 animated shorts starring the whole Hassan crew. Tap a cover and start reading.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Hassan Family Adventures">
-<meta property="og:description" content="22 issues. 9 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
+<meta property="og:description" content="23 issues. 10 cartoons with sound. Dad vs. a waiter. Erik vs. the clipboard. Tap to read.">
 <meta property="og:image" content="https://xhassan9.github.io/hassan-family-comics/img/lineup.jpg">
 <meta property="og:url" content="https://xhassan9.github.io/hassan-family-comics/">
 <meta name="twitter:card" content="summary_large_image">
@@ -143,7 +143,7 @@ footer{font-size:14px;color:var(--muted)}
 <header class="band hero">
   <div class="wrap">
     <div>
-      <span class="burst">22 issues · 9 shorts · 1 very patient Mom</span>
+      <span class="burst">23 issues · 9 shorts · 1 very patient Mom</span>
       <h1>The Hassan Family Adventures</h1>
       <p>Dad hits curbs. Max starts everything. Coco judges everyone. Sito keeps the cookies coming, and Gido still plays through. Pull an issue off the rack and start reading.</p>
       <p id="hello"></p>
@@ -163,7 +163,7 @@ footer{font-size:14px;color:var(--muted)}
 <section class="band" id="rack">
   <div class="wrap">
     <h2>The comic rack</h2>
-    <p class="sub">Twenty-two issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
+    <p class="sub">Twenty-three issues and counting. Tap any cover to read. New episodes drop whenever Dad hits another curb.</p>
     <div class="rack" id="rackGrid"></div>
   </div>
 </section>
@@ -302,7 +302,7 @@ const I=[
   ["n21f","Flashback to the old house. Dad carves, Mom beams, and three little Hassans can't sit still."],
   ["n21g","Uncle Tom raises a glass to Dad and the family he built. Dad tears up. Aidan tries to price the love."],
   ["n21h","And then Dad remembers the grocery bill. Sito reminds everyone what can't go back in. Mom says sit down. Spencer has a turkey on his head. Ava's sock is still missing."]]},
- {n:22,t:"It's Turbo Time",s:"Everything annoys Dad. Spencer is everything.",sk:[
+ {n:22,t:"It's Turbo Time",s:"Everything annoys Dad. Spencer is everything.",vid:["clip10","It's Turbo Time. With voices. Sound on."],sk:[
   ["n22","Sunday. Dad is coaching a golfer through the TV. Spencer is a carpet. Carpets take remotes."],
   ["n22b","The golf is now pancakes. <em>\"This is bullshit!\"</em> Spencer has been doing the robot since nine. Mom is on page forty."],
   ["n22c","Nineteen dollars for coffee beans. Dad wants to see their diploma. Spencer reports for soup."],
@@ -310,7 +310,14 @@ const I=[
   ["n22e","Eggs on the putting green. Protein for the short game. Ralphie has never been happier, alive or otherwise."],
   ["n22f","Dad can't find his glasses. Spencer can see through time. Sito knows. Gido is proud."],
   ["n22g","<em>\"THIS IS BULLSHIT! I'm going for a drive!\"</em> The cart is warm. The ghosts called shotgun."],
-  ["n22h","He was mad for nine holes. Then he took the wheel. Still bullshit, he says. He is smiling."]]}
+  ["n22h","He was mad for nine holes. Then he took the wheel. Still bullshit, he says. He is smiling."]]},
+ {n:23,t:"Unexpected Item",s:"Dad vs. the self-checkout. Spencer brings Greg. Greg is a watermelon.",sk:[
+  ["n23","Self-checkout. <em>\"UNEXPECTED ITEM?!\"</em> Spencer is accessorizing Dad's back. Mom found a lane with a human."],
+  ["n23b","This is Greg. Greg is family. You cannot weigh family."],
+  ["n23c","Eleven dollars for grapes Spencer already ate. Grapes are just raisins that believe in themselves."],
+  ["n23d","The cart has one bad wheel and one bad passenger. Set sail for the car."],
+  ["n23e","Greg called shotgun. Dad is in the back. <em>\"This is bullshit.\"</em> Gido says Greg has a great poker face."],
+  ["n23f","Dad walks home. Greg can have the house. It's nine miles."]]},
 ];
 const CAST=[
  ["Dad","Steelers jersey, one working arm, Johnnie Walker in the other. Yells \"this is bullshit\" at the TV, the contractors and the curb. Thinks Zan spends too much. Just bought a movie theater."],
@@ -334,7 +341,7 @@ const CAST=[
  ["Ralphie","Black dog, white chest. Growls at everyone. Only loves Mom. Hates Dad's finger specifically.",1],
  ["Mistletoe","Shih Tzu. Professional sock thief. Uncle Tom is her main supplier.",1]
 ];
-const VIDS=[["clip9","The Barmuda Triangle","'Still at dinner.' The garage is 'just foggy.'"],["clip7","Meet Erik","He brought seltzers. Dad brought a clipboard."],["clip8","Giuseppi's","The wine went back. So did our reservation."],["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
+const VIDS=[["clip10","It's Turbo Time","Now with voices. Every family member, in their own voice."],["clip9","The Barmuda Triangle","'Still at dinner.' The garage is 'just foggy.'"],["clip7","Meet Erik","He brought seltzers. Dad brought a clipboard."],["clip8","Giuseppi's","The wine went back. So did our reservation."],["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
 const SOON=[["\u26FD","The Christmas Special","How Uncle Tom met Aunt Hope at a gas station. Aidan and Ava tell it. Ghost Mistletoe corrects them."],["\uD83D\uDC7B","Charity vs. Ralphie","Gido has a bodyguard in the afterlife. Ralphie has a twenty-year grudge. Sito is dealing the cards."]];
 const $=s=>document.querySelector(s);
 $("#rackGrid").innerHTML=I.map(i=>{
@@ -374,7 +381,7 @@ $("#other").addEventListener("submit",e=>{e.preventDefault();const v=$("#otherNa
 $("#skip").onclick=()=>setWho("Guest");
 document.addEventListener("click",e=>{if(e.target.id==="switch"){$("#gate").classList.add("on")}});
 $("#share").onclick=async()=>{
-  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 22 comics, 9 cartoons, zero dignity.";
+  const url="https://xhassan9.github.io/hassan-family-comics/",text="Hassan Family Adventures: 23 comics, 10 cartoons, zero dignity.";
   try{if(navigator.share){await navigator.share({title:"Hassan Family Adventures",text,url});return}}catch(e){if(e&&e.name==="AbortError")return}
   try{await navigator.clipboard.writeText(url);toast("Link copied. Paste it in a text.")}catch(e){toast(url)}
 };
