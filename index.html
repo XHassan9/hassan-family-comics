@@ -115,8 +115,8 @@ footer{font-size:14px;color:var(--muted)}
 
 <section class="band" id="videos">
   <div class="wrap">
-    <h2>Coming soon: the videos</h2>
-    <p class="sub">Animated clips with voiceovers are in the works. Dad has not approved any of them.</p>
+    <h2>The videos</h2>
+    <p class="sub">Six animated shorts. Dad has not approved any of them. Turn the sound on.</p>
     <div class="budget">
       <div>6 clips<small>filmed on location</small></div>
       <div>0 permits<small>obtained</small></div>
@@ -216,7 +216,7 @@ const CAST=[
  ["Ralphie","Black dog, white chest. Growls at everyone. Only loves Mom. Hates Dad's finger specifically.",1],
  ["Mistletoe","Shih Tzu. Professional sock thief. Uncle Tom is her main supplier.",1]
 ];
-const VIDS=[["i6c","Straitjacket launch","The recliner fires Dad onto his tiptoes."],["i7a","Curb #4","Sparks fly. Max's ears flap."],["i7b","Hubcap wall","The camera pans the wall of hubcaps."],["i7d","Coco drives","One paw on the wheel. Dad sulks."],["i8c","The slobber putt","Coco sinks it. Spencer celebrates."],["h6thanks","Sock thief","Mistletoe slowly takes Uncle Tom's sock."],["h6thanks","TAZ carves","Laser turkey during a freight call."],["h9xmas","Santa's HTL truck","The sleigh takes off behind a semi."],["i10c","The Golden Hubcap","Dad's slow, outraged double-take."],["h10nye","Ralphie growls","Uncle Tom points. Fireworks."]];
+const VIDS=[["clip6","The Straitjacket Launch","Dad wanted a nap. Mom wanted revenge."],["clip1","Gido, Foreman","Mom left for one weekend. A ghost runs the job site."],["clip3","Thanksgiving Ghost Dog","One ghost dog. Zero manners."],["clip4","The Slobber Putt","Coco sinks it. Spencer takes the credit."],["clip5","Coco Drives Now","Keys confiscated. Coco has the cart."],["clip2","The Golden Hubcap","Lifetime achievement in curbs. Sound on."]];
 const $=s=>document.querySelector(s);
 $("#rackGrid").innerHTML=I.map(i=>{
   const img=i.cover||`img/${i.sk[0][0]}.jpg`;
@@ -224,7 +224,7 @@ $("#rackGrid").innerHTML=I.map(i=>{
    <div class="art ${i.cover?'':'wide'}"><img src="${img}" alt="" loading="lazy"><span class="no">#${i.n}</span>${i.cover?'':`<span class="tag">New</span>`}</div>
    <div class="meta"><b>${i.t}</b><span>${i.s}</span></div></button>`}).join("");
 $("#castGrid").innerHTML=CAST.map(c=>`<div class="who ${c[2]?'ghost':''}"><img src="img/av/${c[0].toLowerCase().replace(' ','-')}.jpg" alt="${c[0]}" loading="lazy"><div><b>${c[0]}${c[2]?' (ghost)':''}</b><span>${c[1]}</span></div></div>`).join("");
-$("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><img src="img/${v[0]}.jpg" alt="" loading="lazy"><div><b>${k+1}. ${v[1]}</b><span>${v[2]}</span></div></div>`).join("");
+$("#vidGrid").innerHTML=VIDS.map((v,k)=>`<div class="vid"><video src="vid/${v[0]}.mp4" controls playsinline preload="metadata" style="width:100%;display:block;border:3px solid var(--line)"></video><div><b>${k+1}. ${v[1]}</b><span>${v[2]}</span></div></div>`).join("");
 const R=$("#reader");
 function show(n){
   const i=I.find(x=>x.n===n); if(!i){R.classList.remove("on");document.body.style.overflow="";return}
